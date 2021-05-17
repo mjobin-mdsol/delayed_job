@@ -78,6 +78,7 @@ module Delayed
         Delayed::Worker.lifecycle.run_callbacks(:invoke_job, self) do
           begin
             hook :before
+            raise "testing"
             payload_object.perform
             hook :success
           rescue Exception => e # rubocop:disable RescueException
